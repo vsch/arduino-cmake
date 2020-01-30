@@ -695,7 +695,8 @@ function(REGISTER_HARDWARE_PLATFORM PLATFORM_PATH)
             endif()
 
             if(${PLATFORM}_PROGRAMMERS_PATH)
-                load_arduino_style_settings(${PLATFORM}_PROGRAMMERS "${ARDUINO_PROGRAMMERS_PATH}")
+                # load_arduino_style_settings(${PLATFORM}_PROGRAMMERS "${ARDUINO_PROGRAMMERS_PATH}")
+                load_arduino_style_settings(${PLATFORM}_PROGRAMMERS "${PLATFORM_PATH}/programmers.txt")
             endif()
 
             if(${PLATFORM}_VARIANTS_PATH)
@@ -923,7 +924,7 @@ endfunction()
 #=============================================================================#
 function(find_arduino_libraries VAR_NAME SRCS ARDLIBS)
     get_property(include_dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
-    
+
     set(ARDUINO_LIBS )
     foreach(SRC ${SRCS})
 
